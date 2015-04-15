@@ -6,7 +6,6 @@ Ncrimes = ...
 % the cutoff for cohesion of a series where if the cohesion is below the cutoff, the series stops growing
 ds = 1.5 
 
-
 %finding Nseed seed crimes for series of crimes
 series = ... % a list of index numbers for series
 Nseries = length(series)
@@ -20,7 +19,7 @@ for i=1:Nseries
 end
 
 % initialize eta
-seriesEta=zeros(Nseries,Nfeatures);
+seriesEta = zeros(Nseries,Nfeatures);
 for t=1:Nseries
     m=min(seed(t,1),seed(t,1));
     l=max(seed(t,1),seed(t,2));
@@ -38,9 +37,11 @@ for t=1:Nseries
 end
 
 % initialize a list with seed crimes
-growlist=zeros(Nseries,block);
+growlist = zeros(Nseries,block);
 growlist(:,1:2)=seed;
 growlist(:,end)=2*ones(Nseries,1);
+tempEta = zeros(Nseries,Nfeatures);
+Cohesion = zeros(Nseries,Nfeatures);
 
 for t=1:Nseries
     %choose crimes from h1 to h2, to grow a crime pattern from the given seed
