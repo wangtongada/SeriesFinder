@@ -16,7 +16,7 @@ the search with different randomly generated starting points
 
 ## find.m
 find.m grows series of crimes from seeds provided by users. Every time, the model computes the pattern-crime similarity between the current pattern and all candidate crimes, and choose the one that has the highest similarity, adds it to the pattern and update the pattern-specific coefficients eta accordingly. The series keeps growing until the cohesion drops below certain cuttoff or the size of the series is bigger than the maximum length allowed
--Ncrimes: the number of all crimes from which we want to discover series. 
--Nseries: the number of series we want to discover
--cutoff: the cutoff for cohesion of a series where if the cohesion is below the cutoff, the series stops growing
--Maxlen:the maximum number of crime that can be discovered in a series
+- Ncrimes: the number of all crimes from which we want to discover series. 
+- Nseries: the number of series we want to discover
+- cutoff: the cutoff for cohesion of a series where if the cohesion is below the cutoff, the series stops growing
+- Maxlen:the maximum number of crime that can be discovered in a series
