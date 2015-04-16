@@ -1,22 +1,13 @@
 %% parameters
-% the number of features used to detec series. In our dataset, there are 11 features
-Nfeatures = 11
-% the number of all crimes from which we want to discover series. 
-Ncrimes = ... 
-% the cutoff for cohesion of a series where if the cohesion is below the cutoff, the series stops growing
-ds = 1.5 
-
-%finding Nseed seed crimes for series of crimes
-series = ... % a list of index numbers for series
-Nseries = length(series)
-Nseed = 2
-seed=zeros(Nseries,Nseed);
-Maxlen = length(growthlist(t,:))
-
-% the seed crimes to grow a series with, they need to be provided by users
-for i=1:Nseries
-    seed(i,1:2)=[...,...];   
+Nfeatures = 11    % the number of features used to detec series. In our dataset, there are 11 features
+Ncrimes = ...     % the number of all crimes from which we want to discover series. 
+Nseries = ...     % the number of series we want to discover
+cutoff =...       % the cutoff for cohesion of a series where if the cohesion is below the cutoff, the series stops growing
+for i=1:Nseries   % the seed crimes to grow a series with, they need to be provided by users
+    seed(i,:)=[...,...];   
 end
+Maxlen = ...      % the maximum number of crime that can be discovered in a series
+ds = 1.5 
 
 % initialize eta
 seriesEta = zeros(Nseries,Nfeatures);
@@ -37,20 +28,19 @@ for t=1:Nseries
 end
 
 % initialize a list with seed crimes
-growlist = zeros(Nseries,block);
+growlist = zeros(Nseries,Maxlen);
 growlist(:,1:2)=seed;
 growlist(:,end)=2*ones(Nseries,1);
 tempEta = zeros(Nseries,Nfeatures);
 Cohesion = zeros(Nseries,Nfeatures);
 
 for t=1:Nseries
-    %choose crimes from h1 to h2, to grow a crime pattern from the given seed
+    %choose crimes grow a crime pattern from the given seed
     %seed(t,1:2) contains the seed of a pattern
     while growlist(t,Maxlen)<Maxlen 
         % calculate the new eta
         tempEta(t,:)=2*seriesEta(t,:)./growlist(t,Maxlen)/(growlist(t,Maxlen)-1);
         % start growing the set
-        maxSim=0;
         for h=1:Ncrimes %choose the most similar crime for the current series t
             if ~ismember(h,growlist(t,:)
                 v1=min(growlist(t,1:growlist(t,Maxlen)),h);
