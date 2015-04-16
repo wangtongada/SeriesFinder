@@ -7,6 +7,7 @@ for i=1:Nseries   % the seed crimes to grow a series with, they need to be provi
     seed(i,:)=[...,...];   
 end
 Maxlen = ...      % the maximum number of crime that can be discovered in a series
+lambda = ...      % this is the output of file learn_lambda.m
 ds = 1.5 
 
 % initialize eta
@@ -52,7 +53,7 @@ for t=1:Nseries
                     residents(v).*HB_Residents_index(v);(~isnan(timeframe(v)).*HB_timeframe_index(v)).*timeframe(v);...
                     dayweek(v).*HB_week_index(v);HB_SP_index(v).*suspect(v);victim(v).*HB_VI_index(v)];
                 eta_mat=repmat(tempEta(t,:)',1,lv);
-                lambda_mat=repmat(x',1,lv);
+                lambda_mat=repmat(lambda',1,lv);
                 Gamma = sum(tempEta.*x)
                 tempSim=sum((s.*lambda_mat.*eta_mat./Gamma).^ds./growlist(t,Maxlen)).^(1/ds);
                 if tempSim>maxSim
