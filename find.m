@@ -43,7 +43,7 @@ for t=1:Nseries
         tempEta(t,:)=2*seriesEta(t,:)./growlist(t,Maxlen)/(growlist(t,Maxlen)-1);
         % start growing the set
         for h=1:Ncrimes %choose the most similar crime for the current series t
-            if ~ismember(h,growlist(t,:)
+            if ~ismember(h,growlist(t,:))
                 v1=min(growlist(t,1:growlist(t,Maxlen)),h);
                 v2=max(growlist(t,1:growlist(t,Maxlen)),h);
                 v=(v2-1).*Ncrimes+v1;
