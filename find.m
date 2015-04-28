@@ -13,7 +13,7 @@ ds = 1.5
 % initialize eta
 seriesEta = zeros(Nseries,Nfeatures);
 for t=1:Nseries
-    m=min(seed(t,1),seed(t,1));
+    m=min(seed(t,1),seed(t,2));
     l=max(seed(t,1),seed(t,2));
     seriesEta(t,1)=LocEntry(m,l);
     seriesEta(t,2)=MnsEntry(m,l);
