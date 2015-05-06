@@ -49,7 +49,7 @@ for i=1:Ncrimes
     if h1==1|h1==8|h1==16|h1==18|h1==19
         MnsEntry(i,:)=zeros(1,h);
     else
-        for j=(i+1):h
+        for j=(i+1):Ncrimes
             h2=strmatch(cell2mat(MnsEntry_data(j)),categories,'exact');
             if h2==1|h2==8|h2==16|h2==18|h2==19
             MnsEntry(i,j)=0;
