@@ -13,7 +13,7 @@ ds = 1.5
 % initialize eta
 seriesEta = zeros(Nseries,Nfeatures);
 for t=1:Nseries
-    m=min(seed(t,1),seed(t,1));
+    m=min(seed(t,1),seed(t,2));
     l=max(seed(t,1),seed(t,2));
     seriesEta(t,1)=LocEntry(m,l);
     seriesEta(t,2)=MnsEntry(m,l);
@@ -43,15 +43,13 @@ for t=1:Nseries
         tempEta(t,:)=2*seriesEta(t,:)./growlist(t,Maxlen)/(growlist(t,Maxlen)-1);
         % start growing the set
         for h=1:Ncrimes %choose the most similar crime for the current series t
-            if ~ismember(h,growlist(t,:)
+            if ~ismember(h,growlist(t,:))
                 v1=min(growlist(t,1:growlist(t,Maxlen)),h);
                 v2=max(growlist(t,1:growlist(t,Maxlen)),h);
                 v=(v2-1).*Ncrimes+v1;
                 lv=length(v);
-                s=[LocEntry(v).*HB_LocEntry_index(v);MnsEntry(v).*HB_MnsEntry_index(v);dayapart(v).*HB_dayapart_index(v);...
-                    HB_dis(v);premises(v).*HB_premises_index(v);ransacked(v).*HB_Ransacked_index(v);...
-                    residents(v).*HB_Residents_index(v);(~isnan(timeframe(v)).*HB_timeframe_index(v)).*timeframe(v);...
-                    dayweek(v).*HB_week_index(v);HB_SP_index(v).*suspect(v);victim(v).*HB_VI_index(v)];
+                s=[LocEntry(v);MnsEntry(v);dayapart(v);HB_dis(v);premises(v);ransacked(v);...
+                    residents(v);timeframe(v);dayweek(v);suspect(v);victim(v)];
                 eta_mat=repmat(tempEta(t,:)',1,lv);
                 lambda_mat=repmat(lambda',1,lv);
                 Gamma = sum(tempEta.*x)
