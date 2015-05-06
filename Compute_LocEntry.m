@@ -10,7 +10,6 @@ Ncategories = length(categories)
 f=[...]    % frequency of each category in the training data
 f=f/sum(f);
 LocEntry=zeros(Ncrimes,Ncrimes);
-LocEntry_index=ones(Ncrimes,Ncrimes);
 
 %     '1--(null)'
 %     '2--Basement'
