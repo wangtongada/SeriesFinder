@@ -36,12 +36,12 @@ LocEntry=zeros(Ncrimes,Ncrimes);
 
 
 for i=1:Ncrimes
-    h1=strmatch(cell2mat(location_data(i)),categories,'exact');
+    h1=strmatch(cell2mat(LocEntry_data(i)),categories,'exact');
     if h1==1|h1==9|h1==12
         LocEntry(i,:)=zeros(1,h);
     else
         for j=(i+1):h
-            h2=strmatch(cell2mat(location_data(j)),categories,'exact');
+            h2=strmatch(cell2mat(LocEntry_data(j)),categories,'exact');
             if h2==1|h2==9|h2==12
             LocEntry(i,j)=0;
             else
