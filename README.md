@@ -1,4 +1,6 @@
 # SeriesFinder
+This is the code for paper "Learning to detect patterns of crime" (http://web.mit.edu/rudin/www/WangRuWaSeECML13.pdf).
+
 The Series Finder model has two components. First, run learn_lambda.m to learn the pattern-general coefficients lambda, and then
 run find.m to grow series from given seeds.
 
