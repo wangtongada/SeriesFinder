@@ -8,7 +8,7 @@ for i=1:Ncrimes
     if isnan(ransacked_data(i))
         ransacked(i,:)=zeros(1,h);
     else
-        for j=(i+1):h
+        for j=(i+1):Ncrimes
         if isnan(ransacked_data(j))
             ransacked(i,j)=0;
         else
