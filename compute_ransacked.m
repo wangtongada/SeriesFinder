@@ -9,14 +9,15 @@ for i=1:Ncrimes
         ransacked(i,:)=zeros(1,h);
     else
         for j=(i+1):Ncrimes
-        if isnan(ransacked_data(j))
-            ransacked(i,j)=0;
-        else
-            if ransacked_data(i)==ransacked_data(j)
-                if ransacked_data(i)==0
-                    ransacked(i,j)=1-f0^2;
-                else
-                    ransacked(i,j)=1-f1^2;
+            if isnan(ransacked_data(j))
+                ransacked(i,j)=0;
+            else
+                if ransacked_data(i)==ransacked_data(j)
+                    if ransacked_data(i)==0
+                      ransacked(i,j)=1-f0^2;
+                    else
+                        ransacked(i,j)=1-f1^2;
+                    end
                 end
             end
         end
