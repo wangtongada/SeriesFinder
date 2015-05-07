@@ -1,4 +1,6 @@
 % compute the similarity in geographic locations
+% data geocode contains the longitutde and latitude of each crime.
+
 HB_dis=zeros(Ncrimes,Ncrimes);
 for i=1:Ncrimes
     for j=(i+1):Ncrimes
