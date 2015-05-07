@@ -40,7 +40,7 @@ for i=1:Ncrimes
     if h1==1|h1==9|h1==12
         LocEntry(i,:)=zeros(1,h);
     else
-        for j=(i+1):h
+        for j=(i+1):Ncrimes
             h2=strmatch(cell2mat(LocEntry_data(j)),categories,'exact');
             if h2==1|h2==9|h2==12
             LocEntry(i,j)=0;
