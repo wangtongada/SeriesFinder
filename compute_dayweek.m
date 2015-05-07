@@ -29,7 +29,7 @@ for i=1:Ncrimes
             d1(2)=2;%Late Week
         else error('error i');
         end
-        for j=(i+1):h
+        for j=(i+1):Ncrimes
             if isempty(strmatch(dayweek_data(j),weekday,'exact'))
                 dayweek(i,j)=0;
                 dayweek_index(i,j)=0;
