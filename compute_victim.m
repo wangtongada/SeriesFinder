@@ -28,8 +28,9 @@ for i1=1:Ncrimes
             if female2==0&male2==0
                 victim_index(i1,i2)=0;
             else
+                % in the following assignment, the values like 0.8 and 0.9 are customized. It can be changed according the users' preferences
                 if (female1==female2)&female1==1&(male1==0)&(male2==0)
-                    victim(i1,i2)=0.8;
+                    victim(i1,i2)=0.8; 
                 elseif female1>1&female2>1&(male1==0)&(male2==0)
                     victim(i1,i2)=0.8;
                 elseif (female1==female2)&female1>1&(male1==0)&(male2==0)
