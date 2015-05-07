@@ -11,7 +11,6 @@ for i=1:Ncrimes
     d1=zeros(1,2);
     if isempty(strmatch(dayweek_data(i),weekday,'exact'))
         dayweek(i,:)=zeros(1,h);
-        dayweek_index(i,:)=zeros(1,h);% 0 means no information
     else
         index1=strmatch(dayweek_data(i),weekday,'exact');
         if index1<6
@@ -32,7 +31,6 @@ for i=1:Ncrimes
         for j=(i+1):Ncrimes
             if isempty(strmatch(dayweek_data(j),weekday,'exact'))
                 dayweek(i,j)=0;
-                dayweek_index(i,j)=0;
             else
                 index2=strmatch(dayweek_data(j),weekday,'exact');
                 if index2<6
