@@ -20,11 +20,11 @@ for i = 1:Nchain
             for r=1:length(scales)
                 lambda_r=lambda_j;
                 gtemp=0;
-                lambda_r(j)=scales(r)*xr(j);
+                lambda_r(j)=scales(r)*lambda_r(j);
                 lambda_r=lambda_r./sum(lambda_r);
                 recall=0;
                 precision=0;
-                growlist = zeros(NtrainSeries,block);
+                growlist = zeros(NtrainSeries,Maxlen);
                 growlist(:,1:2)=seed;
                 growlist(:,end)=2*ones(NtrainSeries,1);
                 % initialize eta
@@ -65,7 +65,7 @@ for i = 1:Nchain
                                     dayweek(v).*HB_week_index(v);HB_SP_index(v).*suspect(v);victim(v).*HB_VI_index(v)];
                                 eta_mat=repmat(tempEta(t,:)',1,lv);
                                 lambda_mat=repmat(lambda_r',1,lv);
-                                Gamma = sum(tempEta.*x)
+                                Gamma = sum(tempEta.*seriesEta(t,:))
                                 tempSim=sum((s.*lambda_mat.*eta_mat./Gamma).^ds./growlist(t,Maxlen)).^(1/ds);
                                 if tempSim>maxSim
                                     newCrime=h;
