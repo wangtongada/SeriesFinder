@@ -19,7 +19,6 @@ for i = 1:Nchain
             lambda_j=lambda_init;
             for r=1:length(scales)
                 lambda_r=lambda_j;
-                gtemp=0;
                 lambda_r(j)=scales(r)*lambda_r(j);
                 lambda_r=lambda_r./sum(lambda_r);
                 recall=0;
@@ -66,7 +65,7 @@ for i = 1:Nchain
                                 eta_mat=repmat(tempEta(t,:)',1,lv);
                                 lambda_mat=repmat(lambda_r',1,lv);
                                 Gamma = sum(tempEta.*seriesEta(t,:))
-                                tempSim=sum((s.*lambda_mat.*eta_mat./Gamma).^ds./growlist(t,Maxlen)).^(1/ds);
+                                tempSim=sum(sum(s.*lambda_mat.*eta_mat./Gamma).^ds./growlist(t,Maxlen)).^(1/ds);
                                 if tempSim>maxSim
                                     newCrime=h;
                                     maxSim=tempSim;
@@ -99,7 +98,7 @@ for i = 1:Nchain
                     end
                     % compute the precision and recall, and then add them to the objective 
                     precision=precision+(length(intersect(trainSeries(t,:),growlist(t,1:(Maxlen-1))))-2)/(growlist(t,Maxlen)-2);
-                    recall=recall+(length(intersect(trainSeries(t,:),growlist(t,1:(Maxlen-1))))-2)/(growlist(t,Maxlen)-2);
+                    recall=recall+(length(intersect(trainSeries(t,:),growlist(t,1:(Maxlen-1))))-2)/(trainSeries(t,Maxlen)-2);
                     stepTable(j,r)=stepTable(j,r)+precision + beta * recall;
                 end
                 if stepTable(j,r)>result(itr)
